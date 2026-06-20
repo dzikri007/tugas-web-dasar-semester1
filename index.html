@@ -1,42 +1,238 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Perpustakaan Digital</title>
-        <link rel="stylesheet" href="css/styles.css">
-    </head>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perpustakaan Digital Desa Kalimanggis</title>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f5f8ff',
+                            100: '#ebf2fe',
+                            200: '#dce6fd',
+                            300: '#c5d5fc',
+                            400: '#a3befa',
+                            500: '#7a9df7',
+                            600: '#5376f2',
+                            700: '#3853e0',
+                            800: '#2e41b9',
+                            900: '#2a3b93',
+                            950: '#1b2357',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.2s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-slate-100 to-indigo-50/30 min-h-screen text-slate-800 flex flex-col">
 
-    <body>
-        <div class="header">
-            <div class="header-logo">
-                <img src="img/Kabupaten-Tasikmalaya.png" alt="logo" height="100px">
-            </div>
-            <div class="header-title">
-                <a href="index.html"> Perpustakaan Digital Desa Kalimanggis </a>
+    <!-- Header / Navbar -->
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="flex items-center space-x-3 group">
+                        <img src="img/Kabupaten-Tasikmalaya.png" alt="Logo Kabupaten Tasikmalaya" class="h-14 w-auto drop-shadow-sm transition-transform duration-300 group-hover:scale-105">
+                        <div class="flex flex-col">
+                            <span class="text-lg font-bold text-slate-800 tracking-tight leading-tight group-hover:text-indigo-600 transition-colors">Perpustakaan Digital</span>
+                            <span class="text-xs font-semibold text-slate-500 tracking-wide uppercase">Desa Kalimanggis</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="index.html" class="px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 text-indigo-600 bg-indigo-50/80">Beranda</a>
+                    <a href="Transaksi.html" class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Transaksi</a>
+                    <a href="buku.html" class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Buku</a>
+                    <a href="profile.html" class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Profile</a>
+                    <a href="Login.html" class="ml-4 px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white rounded-xl text-sm font-semibold shadow-md shadow-indigo-100 hover:shadow-lg hover:shadow-indigo-200 hover:-translate-y-0.5 transition-all duration-200">Login</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-xl text-slate-500 hover:text-slate-700 hover:bg-slate-100/80 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 transition-all duration-200" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6 block" id="menu-icon-open" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                        <svg class="h-6 w-6 hidden" id="menu-icon-close" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
 
-        <ul class="nav">
-            <li class="nav-item"><a href="index.html">Beranda</a></li>
-            <li class="nav-item"><a href="Transaksi.html">Transaksi</a></li>
-            <li class="nav-item"><a href="buku.html">Buku</a></li>
-            <li class="nav-item"><a href="profile.html">profile</a></li>
-            <li class="nav-item"><a href="Login.html">Login</a></li>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-white border-b border-slate-200 animate-fadeIn" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-4 py-2.5 rounded-xl text-base font-semibold text-indigo-600 bg-indigo-50/80">Beranda</a>
+                <a href="Transaksi.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Transaksi</a>
+                <a href="buku.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Buku</a>
+                <a href="profile.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Profile</a>
+                <a href="Login.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Login</a>
+            </div>
+        </div>
+    </nav>
 
-        </ul>
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        
+        <!-- Hero Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6 text-left">
+                <div class="inline-flex items-center space-x-2 bg-indigo-50 border border-indigo-100 rounded-full px-4 py-1.5 text-xs font-semibold text-indigo-700 tracking-wide">
+                    <span>📍</span>
+                    <span>Kabupaten Tasikmalaya</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                    Wilujeng Sumping di <span class="bg-gradient-to-r from-indigo-600 to-indigo-800 bg-clip-text text-transparent">Perpustakaan Digital</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-slate-600 font-medium leading-relaxed max-w-2xl">
+                    Perpustakaan ieu dibuka pikeun saha bae anu bade maca buku-buku anu ngeunaan tentang carita pondok, novel, sareng sains. Temukan wawasan baru di Desa Kalimanggis.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="buku.html" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl text-base font-bold shadow-lg shadow-indigo-200 hover:shadow-xl hover:shadow-indigo-300 hover:-translate-y-0.5 transition-all duration-300 flex items-center space-x-2">
+                        <span>🔍 Jelajahi Buku</span>
+                    </a>
+                    <a href="Transaksi.html" class="px-8 py-4 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 rounded-2xl text-base font-bold shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-center space-x-2">
+                        <span>📝 Pinjam Buku</span>
+                    </a>
+                </div>
+            </div>
 
-        <div class="konten">
-            <h1>Beranda</h1>
-            <h2>Wilujeng Sumping di Perpustakaan Daerah Kabupaten Tasikmalaya</h2>
-            <p>
-                Perpustakaan ieu dibuka pikeun saha bae anu bade maca buku-buku 
-                anu ngeunaan tentang carita pondok, novel, sareng sains.   
-            </p>
-
+            <!-- Visual Graphic Placeholder / Featured Book Preview -->
+            <div class="lg:col-span-5 relative mt-8 lg:mt-0 flex justify-center">
+                <div class="absolute -top-12 -left-12 w-64 h-64 bg-indigo-300/30 rounded-full blur-3xl -z-10"></div>
+                <div class="absolute -bottom-12 -right-12 w-64 h-64 bg-blue-300/20 rounded-full blur-3xl -z-10"></div>
+                
+                <!-- Main Glassmorphism Display Card -->
+                <div class="bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl rounded-3xl p-8 max-w-sm w-full relative">
+                    <div class="absolute top-4 right-4 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-xs font-bold border border-emerald-100">
+                        Rekomendasi
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="img/Lautbercerita.jpeg" alt="Cover Buku Terpopuler" class="h-64 object-cover rounded-2xl shadow-lg transform hover:scale-105 transition-transform duration-500">
+                        <h3 class="text-xl font-extrabold text-slate-900 mt-6 text-center">Laut Bercerita</h3>
+                        <p class="text-sm font-semibold text-slate-500 mt-1">Leila S. Chudori</p>
+                        <div class="w-full h-px bg-slate-100 my-4"></div>
+                        <div class="flex justify-between w-full text-xs font-semibold text-slate-500">
+                            <span>Kategori: Novel</span>
+                            <span class="text-rose-600 bg-rose-50 px-2 py-0.5 rounded">Sedang Dipinjam</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <footer> 
-            <p>Owii &copy; 2024</p> 
-        </footer> 
+        <!-- Stats Section -->
+        <div class="mt-20 md:mt-32">
+            <div class="text-center space-y-2 mb-12">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Statistik Perpustakaan Kami</h2>
+                <p class="text-slate-500 font-medium">Layanan informasi dan literasi untuk masyarakat Desa Kalimanggis</p>
+            </div>
+            
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Stat Card 1 -->
+                <div class="bg-white/60 backdrop-blur-md border border-slate-100 shadow-md hover:shadow-lg rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mx-auto text-xl font-bold mb-4">📚</div>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">1.240+</p>
+                    <p class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wide mt-1">Total Koleksi</p>
+                </div>
+                <!-- Stat Card 2 -->
+                <div class="bg-white/60 backdrop-blur-md border border-slate-100 shadow-md hover:shadow-lg rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mx-auto text-xl font-bold mb-4">👥</div>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">450+</p>
+                    <p class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wide mt-1">Anggota Aktif</p>
+                </div>
+                <!-- Stat Card 3 -->
+                <div class="bg-white/60 backdrop-blur-md border border-slate-100 shadow-md hover:shadow-lg rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mx-auto text-xl font-bold mb-4">🔄</div>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">89</p>
+                    <p class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wide mt-1">Buku Terpinjam</p>
+                </div>
+                <!-- Stat Card 4 -->
+                <div class="bg-white/60 backdrop-blur-md border border-slate-100 shadow-md hover:shadow-lg rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mx-auto text-xl font-bold mb-4">⚡</div>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">120</p>
+                    <p class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wide mt-1">Kunjungan/Hari</p>
+                </div>
+            </div>
+        </div>
 
-    </body>
+        <!-- Features Section -->
+        <div class="mt-24 md:mt-36 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white border border-slate-100 shadow-md p-8 rounded-2xl space-y-4">
+                <span class="text-3xl">📖</span>
+                <h3 class="text-lg font-bold text-slate-900">Koleksi Lengkap & Beragam</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Kami menyediakan berbagai macam buku mulai dari novel sastra, buku sains, ensiklopedia anak, hingga jurnal pendidikan untuk mendukung pembelajaran warga.
+                </p>
+            </div>
+            <div class="bg-white border border-slate-100 shadow-md p-8 rounded-2xl space-y-4">
+                <span class="text-3xl">⏱️</span>
+                <h3 class="text-lg font-bold text-slate-900">Transaksi Cepat</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Ajukan peminjaman dan pengembalian secara digital melalui form transaksi yang disediakan. Praktis dan terdokumentasi dengan baik.
+                </p>
+            </div>
+            <div class="bg-white border border-slate-100 shadow-md p-8 rounded-2xl space-y-4">
+                <span class="text-3xl">🏠</span>
+                <h3 class="text-lg font-bold text-slate-900">Akses Mandiri</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Setiap anggota desa dapat melihat katalog ketersediaan buku secara langsung kapan pun dan di mana pun dari ponsel pintar mereka.
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-2">
+            <p class="text-sm font-semibold text-slate-300">Perpustakaan Digital Desa Kalimanggis</p>
+            <p class="text-xs text-slate-500">Owii &copy; 2024 - Kabupaten Tasikmalaya. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu toggle -->
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('menu-icon-open');
+        const iconClose = document.getElementById('menu-icon-close');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+        });
+    </script>
+</body>
 </html>

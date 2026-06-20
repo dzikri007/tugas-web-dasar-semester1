@@ -1,102 +1,306 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Perpustakaan Digital - buku</title>
-        <link rel="stylesheet" href="css/styles.css">
-    </head>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Buku - Perpustakaan Digital</title>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f5f8ff',
+                            100: '#ebf2fe',
+                            200: '#dce6fd',
+                            300: '#c5d5fc',
+                            400: '#a3befa',
+                            500: '#7a9df7',
+                            600: '#5376f2',
+                            700: '#3853e0',
+                            800: '#2e41b9',
+                            900: '#2a3b93',
+                            950: '#1b2357',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.2s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-slate-100 to-indigo-50/30 min-h-screen text-slate-800 flex flex-col">
 
-    <body>
-        <div class="header">
-            <div class="header-logo">
-                <img src="img/Kabupaten-Tasikmalaya.png" alt="logo" height="100px">
-            </div>
-            
-            <div class="header-title">
-                <a href="index.html"> Perpustakaan Digital Desa Kalimanggis</a>
+    <!-- Header / Navbar -->
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="flex items-center space-x-3 group">
+                        <img src="img/Kabupaten-Tasikmalaya.png" alt="Logo Kabupaten Tasikmalaya" class="h-14 w-auto drop-shadow-sm transition-transform duration-300 group-hover:scale-105">
+                        <div class="flex flex-col">
+                            <span class="text-lg font-bold text-slate-800 tracking-tight leading-tight group-hover:text-indigo-600 transition-colors">Perpustakaan Digital</span>
+                            <span class="text-xs font-semibold text-slate-500 tracking-wide uppercase">Desa Kalimanggis</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="index.html" class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Beranda</a>
+                    <a href="Transaksi.html" class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Transaksi</a>
+                    <a href="buku.html" class="px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 text-indigo-600 bg-indigo-50/80">Buku</a>
+                    <a href="profile.html" class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Profile</a>
+                    <a href="Login.html" class="ml-4 px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white rounded-xl text-sm font-semibold shadow-md shadow-indigo-100 hover:shadow-lg hover:shadow-indigo-200 hover:-translate-y-0.5 transition-all duration-200">Login</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-xl text-slate-500 hover:text-slate-700 hover:bg-slate-100/80 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 transition-all duration-200" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6 block" id="menu-icon-open" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                        <svg class="h-6 w-6 hidden" id="menu-icon-close" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
 
-        <ul class="nav">
-            <li class="nav-item"><a href="index.html">Beranda</a></li>
-            <li class="nav-item"><a href="Transaksi.html">Transaksi</a></li>
-            <li class="nav-item"><a href="buku.html">Buku</a></li>
-            <li class="nav-item"><a href="profile.html">profile</a></li>
-            <li class="nav-item"><a href="Login.html">Login</a></li>
-
-        </ul>
-
-        <div class="konten">
-            <h1>Daftar Buku</h1>
-            
-            <table class="tabel">
-                <tr class="tabel-header">
-                    <th>No</th>
-                    <th>Cover</th>
-                    <th>Judul</th>
-                    <th>Penulis</th>
-                    <th>Status</th>
-                </tr>
-
-                <tr class="tabel-konten">
-                    <td>1</td>
-                    <td><img src="img/Lautbercerita.jpeg" alt="Laut bercerita"></td>
-                    <td>Laut bercerita</td>
-                    <td>Leila S.CHUDORI</td>
-                    <td>Terpinjam</td>
-                </tr>
-
-                <tr class="tabel-konten genap">
-                    <td>2</td>
-                    <td><img src="img/Senjabersamaayah.jpeg" alt="Senja Bersama Ayah"></td>
-                    <td>Senja Bersama Ayah</td>
-                    <td>@Rahayu PP</td>
-                    <td>Terpinjam</td>
-                </tr>
-                
-                <tr class="tabel-konten">
-                    <td>3</td>
-                    <td><img src="img/Tere liye (1).jpeg" alt="Rembulan Tenggelam Di Wajah mu"></td>
-                    <td>Rembulan Tenggelam Di Wajah mu</td>
-                    <td>Tere liye</td>
-                    <td>Terpinjam</td>
-                </tr>
-                
-                <tr class="tabel-konten genap">
-                    <td>4</td>
-                    <td><img src="img/Tere liye (2013).jpeg" alt="Negri Di Ujung Tanduk "></td>
-                    <td>Negri Di Ujung Tanduk </td>
-                    <td>Tere liye</td>
-                    <td>Terpinjam</td>
-                </tr>
-                
-                <tr class="tabel-konten">
-                    <td>5</td>
-                    <td><img src="img/Tere Liye.jpeg" alt="Pulang-Pergi"></td>
-                    <td>Pulang-Pergi</td>
-                    <td>Tere liye</td>
-                    <td>Terpinjam</td>
-                </tr>
-                
-                <tr class="tabel-konten genap">
-                    <td>6</td>
-                    <td><img src="img/https___pin_it_4qTSYKNPG.jpeg" alt="The Atom"></td>
-                    <td>The Atom </td>
-                    <td>Tantalum Radium</td>
-                    <td>Terpinjam</td>
-                </tr>
-                
-                <tr class="tabel-konten">
-                    <td>7</td>
-                    <td><img src="img/biology cover page aesthetic _ Erdkunde deckblatt, Deckblatt schule, Biologiestunden.jpeg" alt="biology"></td>
-                    <td>biology</td>
-                    <td>Prof. Dzikri</td>
-                    <td>Terpinjam</td>
-                </tr>
-                
-            </table>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-white border-b border-slate-200 animate-fadeIn" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Beranda</a>
+                <a href="Transaksi.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Transaksi</a>
+                <a href="buku.html" class="block px-4 py-2.5 rounded-xl text-base font-semibold text-indigo-600 bg-indigo-50/80">Buku</a>
+                <a href="profile.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Profile</a>
+                <a href="Login.html" class="block px-4 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50">Login</a>
+            </div>
         </div>
-        <footer> 
-            <p>Owii &copy; 2024</p> 
-        </footer> 
-    </body>
-    </html>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 w-full">
+        
+        <div class="space-y-8">
+            <!-- Page Title and Mock Search -->
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Daftar Koleksi Buku</h1>
+                    <p class="text-sm font-semibold text-slate-500 mt-1">Cari dan lihat status ketersediaan buku perpustakaan desa</p>
+                </div>
+                
+                <!-- Mockup Search and Filter -->
+                <div class="flex flex-wrap gap-3">
+                    <div class="relative w-64">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">🔍</span>
+                        <input type="text" placeholder="Cari judul atau penulis..." 
+                            class="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition-all">
+                    </div>
+                    <select class="px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-indigo-500 transition-all cursor-pointer">
+                        <option value="">Semua Kategori</option>
+                        <option value="novel">Novel</option>
+                        <option value="sains">Sains & Biologi</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Table Wrapper (Glassmorphic Box) -->
+            <div class="bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl rounded-3xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse text-left">
+                        <thead>
+                            <tr class="bg-slate-50/75 border-b border-slate-100 text-xs font-bold text-slate-500 uppercase tracking-wider">
+                                <th class="py-5 px-6 text-center w-16">No</th>
+                                <th class="py-5 px-6 w-32">Cover</th>
+                                <th class="py-5 px-6">Judul</th>
+                                <th class="py-5 px-6">Penulis</th>
+                                <th class="py-5 px-6 text-center w-40">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100/80">
+                            <!-- Book 1 -->
+                            <tr class="hover:bg-indigo-50/30 transition-colors">
+                                <td class="py-4 px-6 text-center font-bold text-slate-400">1</td>
+                                <td class="py-4 px-6">
+                                    <img src="img/Lautbercerita.jpeg" alt="Laut bercerita" class="h-24 w-16 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                                </td>
+                                <td class="py-4 px-6">
+                                    <span class="font-bold text-slate-800 block text-base hover:text-indigo-600 transition-colors cursor-pointer">Laut Bercerita</span>
+                                    <span class="text-xs bg-indigo-50 text-indigo-700 font-semibold px-2 py-0.5 rounded mt-1 inline-block">Novel Fiksi</span>
+                                </td>
+                                <td class="py-4 px-6 text-sm font-semibold text-slate-600">Leila S. Chudori</td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-rose-50 text-rose-700 border border-rose-100">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                                        <span>Terpinjam</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Book 2 -->
+                            <tr class="hover:bg-indigo-50/30 transition-colors">
+                                <td class="py-4 px-6 text-center font-bold text-slate-400">2</td>
+                                <td class="py-4 px-6">
+                                    <img src="img/Senjabersamaayah.jpeg" alt="Senja Bersama Ayah" class="h-24 w-16 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                                </td>
+                                <td class="py-4 px-6">
+                                    <span class="font-bold text-slate-800 block text-base hover:text-indigo-600 transition-colors cursor-pointer">Senja Bersama Ayah</span>
+                                    <span class="text-xs bg-indigo-50 text-indigo-700 font-semibold px-2 py-0.5 rounded mt-1 inline-block">Novel Fiksi</span>
+                                </td>
+                                <td class="py-4 px-6 text-sm font-semibold text-slate-600">@Rahayu PP</td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-rose-50 text-rose-700 border border-rose-100">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                                        <span>Terpinjam</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Book 3 -->
+                            <tr class="hover:bg-indigo-50/30 transition-colors">
+                                <td class="py-4 px-6 text-center font-bold text-slate-400">3</td>
+                                <td class="py-4 px-6">
+                                    <img src="img/Tere liye (1).jpeg" alt="Rembulan Tenggelam Di Wajah mu" class="h-24 w-16 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                                </td>
+                                <td class="py-4 px-6">
+                                    <span class="font-bold text-slate-800 block text-base hover:text-indigo-600 transition-colors cursor-pointer">Rembulan Tenggelam Di Wajahmu</span>
+                                    <span class="text-xs bg-indigo-50 text-indigo-700 font-semibold px-2 py-0.5 rounded mt-1 inline-block">Novel</span>
+                                </td>
+                                <td class="py-4 px-6 text-sm font-semibold text-slate-600">Tere Liye</td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-rose-50 text-rose-700 border border-rose-100">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                                        <span>Terpinjam</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Book 4 -->
+                            <tr class="hover:bg-indigo-50/30 transition-colors">
+                                <td class="py-4 px-6 text-center font-bold text-slate-400">4</td>
+                                <td class="py-4 px-6">
+                                    <img src="img/Tere liye (2013).jpeg" alt="Negri Di Ujung Tanduk" class="h-24 w-16 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                                </td>
+                                <td class="py-4 px-6">
+                                    <span class="font-bold text-slate-800 block text-base hover:text-indigo-600 transition-colors cursor-pointer">Negeri Di Ujung Tanduk</span>
+                                    <span class="text-xs bg-indigo-50 text-indigo-700 font-semibold px-2 py-0.5 rounded mt-1 inline-block">Novel Fiksi Politik</span>
+                                </td>
+                                <td class="py-4 px-6 text-sm font-semibold text-slate-600">Tere Liye</td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-rose-50 text-rose-700 border border-rose-100">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                                        <span>Terpinjam</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Book 5 -->
+                            <tr class="hover:bg-indigo-50/30 transition-colors">
+                                <td class="py-4 px-6 text-center font-bold text-slate-400">5</td>
+                                <td class="py-4 px-6">
+                                    <img src="img/Tere Liye.jpeg" alt="Pulang-Pergi" class="h-24 w-16 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                                </td>
+                                <td class="py-4 px-6">
+                                    <span class="font-bold text-slate-800 block text-base hover:text-indigo-600 transition-colors cursor-pointer">Pulang-Pergi</span>
+                                    <span class="text-xs bg-indigo-50 text-indigo-700 font-semibold px-2 py-0.5 rounded mt-1 inline-block">Novel Aksi</span>
+                                </td>
+                                <td class="py-4 px-6 text-sm font-semibold text-slate-600">Tere Liye</td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-rose-50 text-rose-700 border border-rose-100">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                                        <span>Terpinjam</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Book 6 -->
+                            <tr class="hover:bg-indigo-50/30 transition-colors">
+                                <td class="py-4 px-6 text-center font-bold text-slate-400">6</td>
+                                <td class="py-4 px-6">
+                                    <img src="img/https___pin_it_4qTSYKNPG.jpeg" alt="The Atom" class="h-24 w-16 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                                </td>
+                                <td class="py-4 px-6">
+                                    <span class="font-bold text-slate-800 block text-base hover:text-indigo-600 transition-colors cursor-pointer">The Atom</span>
+                                    <span class="text-xs bg-indigo-50 text-indigo-700 font-semibold px-2 py-0.5 rounded mt-1 inline-block">Sains / Kimia</span>
+                                </td>
+                                <td class="py-4 px-6 text-sm font-semibold text-slate-600">Tantalum Radium</td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-rose-50 text-rose-700 border border-rose-100">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                                        <span>Terpinjam</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Book 7 -->
+                            <tr class="hover:bg-indigo-50/30 transition-colors">
+                                <td class="py-4 px-6 text-center font-bold text-slate-400">7</td>
+                                <td class="py-4 px-6">
+                                    <img src="img/biology cover page aesthetic _ Erdkunde deckblatt, Deckblatt schule, Biologiestunden.jpeg" alt="Biology" class="h-24 w-16 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                                </td>
+                                <td class="py-4 px-6">
+                                    <span class="font-bold text-slate-800 block text-base hover:text-indigo-600 transition-colors cursor-pointer">Biology</span>
+                                    <span class="text-xs bg-indigo-50 text-indigo-700 font-semibold px-2 py-0.5 rounded mt-1 inline-block">Sains / Biologi</span>
+                                </td>
+                                <td class="py-4 px-6 text-sm font-semibold text-slate-600">Prof. Dzikri</td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-rose-50 text-rose-700 border border-rose-100">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                                        <span>Terpinjam</span>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-2">
+            <p class="text-sm font-semibold text-slate-300">Perpustakaan Digital Desa Kalimanggis</p>
+            <p class="text-xs text-slate-500">Owii &copy; 2024 - Kabupaten Tasikmalaya. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu toggle -->
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('menu-icon-open');
+        const iconClose = document.getElementById('menu-icon-close');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
